@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Searchbar extends Component {
   state = {
-    find: '',
+    find: "",
   };
 
-  handleSearchForm = e => {
+  handleSearchForm = (e) => {
     e.preventDefault();
     this.props.onSubmit(this.state.find);
-    this.setState({ find: '' });
+    this.setState({ find: "" });
   };
 
-  handleInputChange = e => {
+  handleInputChange = (e) => {
     this.setState({ find: e.target.value });
   };
 
@@ -20,11 +20,7 @@ class Searchbar extends Component {
     return (
       <header className="Searchbar">
         <form className="SearchForm" onSubmit={this.handleSearchForm}>
-          <button
-            type="submit"
-            className="SearchForm-button"
-            // onSubmit={this.handleSearchForm}
-          >
+          <button type="submit" className="SearchForm-button">
             <span className="SearchForm-button-label">Search</span>
           </button>
 

@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import Searchbar from './searchbar/Searchbar';
-import { getPhoto } from '../services/ApiServices';
-import ImageGallery from './imageGallery/ImageGallery';
-import Modal from './modal/Modal';
-import Button from './button/Button';
-import Loader from './loader/Loader';
+import React, { Component } from "react";
+import Searchbar from "./searchbar/Searchbar";
+import { getPhoto } from "../services/ApiServices";
+import ImageGallery from "./imageGallery/ImageGallery";
+import Modal from "./modal/Modal";
+import Button from "./button/Button";
+import Loader from "./loader/Loader";
 
 class App extends Component {
   state = {
-    find: '',
+    find: "",
     gallery: [],
     page: 1,
     total: 0,
@@ -26,9 +26,6 @@ class App extends Component {
       this.makeGallery();
       return;
     }
-    // if (prevState.find === this.state.find) {
-    //   this.makeGallery();
-    // }
   }
 
   makeGallery = () => {
@@ -37,8 +34,8 @@ class App extends Component {
 
     getPhoto(find, page)
       .then(({ hits, total }) => {
-        console.log('hit', hits);
-        this.setState(prevState => ({
+        console.log("hit", hits);
+        this.setState((prevState) => ({
           gallery: [...prevState.gallery, ...hits],
           page: prevState.page + 1,
           total,
@@ -47,29 +44,28 @@ class App extends Component {
           this.scroll();
         }
 
-        console.log('state', this.state.gallery);
+        console.log("state", this.state.gallery);
         if (total === 0) {
-          alert('There are no pictures');
+          alert("There are no pictures");
         }
       })
-      .catch(error => alert(error.message))
+      .catch((error) => alert(error.message))
       .finally(() => this.setState({ isLoading: false }));
   };
 
-  onFormSubmit = find => {
+  onFormSubmit = (find) => {
     this.setState({ find, page: 1 });
-    // this.makeGallery();
   };
 
   scroll = () => {
     window.scrollTo({
       top: document.documentElement.scrollHeight,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
   toggleModal = () => {
-    this.setState(prev => ({
+    this.setState((prev) => ({
       showModal: !prev.showModal,
     }));
   };
@@ -78,14 +74,10 @@ class App extends Component {
     return Math.ceil(this.state.total / 12) !== this.state.page - 1;
   };
 
-  onPictureOpen = largeImage => {
+  onPictureOpen = (largeImage) => {
     this.setState({ largeImageURL: largeImage });
     this.toggleModal();
   };
-
-  // onLoadMore = () => {
-  //   this.setState(prevState => ({ page: prevState.page + 1 }));
-  // };
 
   render() {
     const { gallery, showModal, largeImageURL, isLoading, total } = this.state;
@@ -94,7 +86,7 @@ class App extends Component {
       <>
         <Searchbar onSubmit={this.onFormSubmit} />
 
-        {console.log('render', gallery)}
+        {console.log("render", gallery)}
         {gallery.length !== 0 && (
           <ImageGallery gallery={gallery} onPictureOpen={this.onPictureOpen} />
         )}
