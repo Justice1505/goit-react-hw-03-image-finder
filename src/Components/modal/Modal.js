@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
-
+import s from "./Modal.module.css";
 const modal = document.querySelector("#modal");
-
+console.log(modal);
 class Modal extends Component {
   state = {};
 
@@ -29,8 +29,8 @@ class Modal extends Component {
 
   render() {
     return createPortal(
-      <div className="Overlay" onClick={this.onBackdrop}>
-        <div className="Modal">
+      <div className={s.Overlay} onClick={this.onBackdrop}>
+        <div className={s.Modal}>
           <img src={this.props.largeImage} alt="#" />
         </div>
       </div>,

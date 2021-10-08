@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import Searchbar from "./searchbar/Searchbar";
-import { getPhoto } from "../services/ApiServices";
-import ImageGallery from "./imageGallery/ImageGallery";
-import Modal from "./modal/Modal";
-import Button from "./button/Button";
-import Loader from "./loader/Loader";
+import Searchbar from "./Components/searchbar/Searchbar";
+import { getPhoto } from "./services/ApiServices";
+import ImageGallery from "./Components/imageGallery/ImageGallery";
+import Modal from "./Components/modal/Modal";
+import Button from "./Components/button/Button";
+import Loader from "./Components/loader/Loader";
+import "./App.css";
 
 class App extends Component {
   state = {
