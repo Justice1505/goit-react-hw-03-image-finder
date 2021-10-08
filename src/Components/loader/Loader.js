@@ -6,7 +6,7 @@ export default class App extends React.Component {
     return (
       <Loader
         type="ThreeDots"
-        color="#00BFFF"
+        color="black"
         height={70}
         width={100}
         timeout={3000}
