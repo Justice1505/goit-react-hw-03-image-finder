@@ -21,7 +21,6 @@ class App extends Component {
     if (prevState.find !== this.state.find) {
       this.setState({
         gallery: [],
-        // page: 1,
       });
       this.makeGallery();
       return;
